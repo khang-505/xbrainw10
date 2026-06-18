@@ -15,13 +15,16 @@ spec:
     rego: |
       package k8spspnonrootuser
 
+      # Check Pod trực tiếp
       violation[{"msg": msg}] {
-        container := input.review.object.spec.template.spec.containers[_]
-
+        container := input.review.object.spec.containers[_]
         container.securityContext.runAsUser == 0
-
-        msg := sprintf(
-          "container <%v> must not run as root",
-          [container.name]
-        )
+        msg := sprintf("container <%v> must not run as root", [container.name])
       }
+
+      violation[{"msg": msg}] {
+       container := input.review.object.spec.template.spec.containers[_]
+       container.securityContext.runAsUser == 0
+        msg := sprintf("container <%v> in template must not run as root", [container.name])
+      }
+      

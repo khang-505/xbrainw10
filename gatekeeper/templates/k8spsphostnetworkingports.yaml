@@ -22,8 +22,12 @@ spec:
     rego: |
       package k8spsphostnetworkingports
 
+      # Check Pod trực tiếp
+      violation[{"msg": msg}] {
+        input.review.object.spec.hostNetwork == true
+        msg := "hostNetwork=true is forbidden"
+      }
       violation[{"msg": msg}] {
         input.review.object.spec.template.spec.hostNetwork == true
-
         msg := "hostNetwork=true is forbidden"
       }

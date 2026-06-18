@@ -14,8 +14,16 @@ spec:
       rego: |
         package k8sdisallowlatesttag
 
+        # Check Pod trực tiếp
         violation[{"msg": msg}] {
-          container := input.review.object.spec.template.spec.containers[_]
+          container := input.review.object.spec.containers[_]
+          endswith(container.image, ":latest")
+          msg := sprintf("latest tag forbidden: %v", [container.image])
+        }
+
+ 
+        violation[{"msg": msg}] {
+         container := input.review.object.spec.template.spec.containers[_]
           endswith(container.image, ":latest")
           msg := sprintf("latest tag forbidden: %v", [container.image])
         }

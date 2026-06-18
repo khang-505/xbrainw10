@@ -23,15 +23,18 @@ spec:
     rego: |
       package k8srequiredresources
 
+      # Check Pod trực tiếp
+      violation[{"msg": msg}] {
+        container := input.review.object.spec.containers[_]
+        required := input.parameters.limits[_]
+        not container.resources.limits[required]
+        msg := sprintf("container <%v> missing limit <%v>", [container.name, required])
+      }
+
+
       violation[{"msg": msg}] {
         container := input.review.object.spec.template.spec.containers[_]
-
         required := input.parameters.limits[_]
-
         not container.resources.limits[required]
-
-        msg := sprintf(
-          "container <%v> missing limit <%v>",
-          [container.name, required]
-        )
-      }
+        msg := sprintf("container <%v> missing limit <%v>", [container.name, required])
+  }
