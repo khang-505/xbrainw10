@@ -23,7 +23,7 @@ spec:
       package k8spsphostnetworkingports
 
       violation[{"msg": msg}] {
-        input.review.object.spec.hostNetwork == true
+        input.review.object.spec.template.spec.hostNetwork == true
 
         msg := "hostNetwork=true is forbidden"
       }

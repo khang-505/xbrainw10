@@ -52,6 +52,7 @@ w10/
 ### 1. Setup Cluster
 ```bash
 minikube start -p w10 --driver=docker
+minikube start -p w10 --driver=docker --memory=6144 --cpus=4
 kubectl config use-context w10
 ```
 
