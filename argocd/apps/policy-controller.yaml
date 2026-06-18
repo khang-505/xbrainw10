@@ -10,7 +10,7 @@ spec:
   source:
     chart: policy-controller
     repoURL: https://sigstore.github.io/helm-charts
-    targetRevision: 0.12.0 
+    targetRevision: "" 
     helm:
       values: |
         fullnameOverride: policy-controller
