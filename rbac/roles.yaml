@@ -11,7 +11,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: clusterrole
 metadata:
-  namespace: demo
   name: full-access-role
 rules:
 - apiGroups: ["", "apps"]
@@ -21,7 +20,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: clusterrole
 metadata:
-  namespace: demo
   name: view-only-role
 rules:
 - apiGroups: ["", "apps"]
