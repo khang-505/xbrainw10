@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/khang-505/xbrainw10.git
     path: rbac
-    targetRevision: main
+    targetRevision: master
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
