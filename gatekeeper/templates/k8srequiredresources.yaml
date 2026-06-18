@@ -37,4 +37,4 @@ spec:
         required := input.parameters.limits[_]
         not container.resources.limits[required]
         msg := sprintf("container <%v> missing limit <%v>", [container.name, required])
-  }
+      }
