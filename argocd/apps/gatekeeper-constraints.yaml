@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gatekeeper-policies
+  name: gatekeeper-constraints
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-10"
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   project: default
 
   source:
     repoURL: https://github.com/khang-505/xbrainw10.git
     targetRevision: master
-    path: gatekeeper
+    path: gatekeeper/constraints
 
   destination:
     server: https://kubernetes.default.svc
