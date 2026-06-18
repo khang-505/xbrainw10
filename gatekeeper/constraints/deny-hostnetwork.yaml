@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPHostNetworkingPorts
+metadata:
+  name: deny-hostnetwork
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+spec:
+  match:
+    excludedNamespaces:
+      - kube-system
+      - gatekeeper-system
+
+  parameters:
+    hostNetwork: false
