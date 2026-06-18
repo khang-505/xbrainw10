@@ -1,0 +1,33 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: demo
+  name: crud-demo-binding
+subjects:
+- kind: User
+  name: alice           
+roleRef:
+  kind: Role
+  name: crud-demo-role   
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: full-access-binding
+subjects:
+- kind: User
+  name: bob 
+roleRef:
+  kind: ClusterRole
+  name: full-access-role  
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: view-only-binding
+subjects:
+- kind: User
+  name: carol
+roleRef:
+  kind: ClusterRole
+  name: view-only-role
