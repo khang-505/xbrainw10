@@ -13,6 +13,8 @@ spec:
           - StatefulSet
           - DaemonSet
           - ReplicaSet
-          - rollout
+      - apiGroups: ["argoproj.io"]
+        kinds:
+          - Rollout
   parameters:
   

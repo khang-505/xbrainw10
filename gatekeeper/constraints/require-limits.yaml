@@ -11,7 +11,6 @@ spec:
         kinds:
           - Pod
           - deployment
-          - rollout
 
   parameters:
     limits:

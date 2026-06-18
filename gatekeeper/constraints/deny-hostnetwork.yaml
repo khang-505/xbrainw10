@@ -11,7 +11,12 @@ spec:
       - gatekeeper-system
     kinds:
       - apiGroups: ["apps"]
-        kinds: ["Deployment", "Rollout"]
+        kinds:
+        - Deployment
+
+      - apiGroups: ["argoproj.io"]
+        kinds:
+        - Rollout
 
   parameters:
     hostNetwork: false
