@@ -19,7 +19,10 @@ spec:
       - apiGroups: ["argoproj.io"]
         kinds:
           - Rollout
-
+    excludedNamespaces:
+      - "external-secrets" 
+      - "kube-system"
+      - "gatekeeper-system"
   parameters:
     limits:
       - cpu
