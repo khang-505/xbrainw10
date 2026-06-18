@@ -1,0 +1,14 @@
+apiVersion: policy.sigstore.dev/v1beta1
+kind: ClusterImagePolicy
+metadata:
+  name: check-signature
+spec:
+  images:
+  - glob: ghcr.io/khang-505/w10-api:*
+  authorities:
+  - key:
+      data: |
+        -----BEGIN PUBLIC KEY-----
+        MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKxHGRJGxIulyyrpNUjO/Lel8jPfL
+        NrZvy18kj+oAyOfse4+/xpqr8xAKVaaPDuqhp/aOehiD7asbGEB+sIb8Jw==
+        -----END PUBLIC KEY-----
