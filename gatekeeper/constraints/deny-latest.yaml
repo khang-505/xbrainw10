@@ -13,5 +13,6 @@ spec:
           - StatefulSet
           - DaemonSet
           - ReplicaSet
+          - rollout
   parameters:
   

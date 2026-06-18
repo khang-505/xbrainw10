@@ -10,6 +10,8 @@ spec:
       - apiGroups: [""]
         kinds:
           - Pod
+          - deployment
+          - rollout
 
   parameters:
     limits:

@@ -9,3 +9,6 @@ spec:
     excludedNamespaces:
       - kube-system
       - gatekeeper-system
+    kinds:
+      - apiGroups: ["apps"]
+        kinds: ["Deployment", "Rollout"]

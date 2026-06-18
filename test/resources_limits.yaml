@@ -1,0 +1,18 @@
+# test-fail-limits.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-fail-limits
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21.6
+        # Thiếu block resources.limits

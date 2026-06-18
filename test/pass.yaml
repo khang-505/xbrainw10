@@ -1,0 +1,25 @@
+# test-pass.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-pass
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      hostNetwork: false
+      securityContext:
+        runAsUser: 1000
+      containers:
+      - name: nginx
+        image: nginx:1.21.6
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
