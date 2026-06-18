@@ -16,9 +16,8 @@ spec:
       package k8spspnonrootuser
 
       violation[{"msg": msg}] {
-        container := input.review.object.spec.containers[_]
-        container.securityContext.runAsUser == 0
-        msg := sprintf("container <%v> must not run as root", [container.name])
+        input.review.object.spec.template.spec.securityContext.runAsUser == 0
+        msg := sprintf("pod  must not run as root")
       }
 
       violation[{"msg": msg}] {

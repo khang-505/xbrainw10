@@ -10,7 +10,15 @@ spec:
       - apiGroups: [""]
         kinds:
           - Pod
-          - deployment
+      - apiGroups: ["apps"]
+        kinds:
+          - Deployment
+          - StatefulSet
+          - DaemonSet
+          - ReplicaSet
+      - apiGroups: ["argoproj.io"]
+        kinds:
+          - Rollout
 
   parameters:
     limits:
