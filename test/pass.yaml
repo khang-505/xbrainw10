@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test-pass-limits
+  namespace: external-secrets
 spec:
   replicas: 1
   selector:
@@ -15,7 +16,12 @@ spec:
       containers:
       - name: nginx
         image: nginx:1.21.6
-
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: k8s-db-secret   
+              key: DB_PASSWORD
         resources:
           requests:
             cpu: 100m

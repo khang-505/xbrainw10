@@ -8,6 +8,9 @@ on:
     - 'app-alert/**'
     - 'app-common/**'
     - 'argocd/**'
+    - 'rbac/**'
+    - 'gatekeeper/**'
+    - 'eso/**'
     # W10 se them: rbac/**, gatekeeper/**, eso/**, signing/**
 
 jobs:
