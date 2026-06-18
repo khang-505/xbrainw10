@@ -52,15 +52,14 @@ w10/
 ### 1. Setup Cluster
 ```bash
 minikube start -p w10 --driver=docker
-minikube start -p w10 --driver=docker --memory=6144 --cpus=4
+minikube start -p w10 --driver=docker --memory=5120 --cpus=4
 kubectl config use-context w10
 ```
 
 ### 2. Install ArgoCD
 ```bash
 kubectl create ns argocd
-kubectl apply --server-side -n argocd \
-  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply --server-side -n argocd  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl -n argocd rollout status deploy/argocd-server
 ```
 
@@ -70,8 +69,7 @@ kubectl -n argocd rollout status deploy/argocd-server
 kubectl -n argocd port-forward svc/argocd-server 8080:443 &
 
 # Get password
-kubectl -n argocd get secret argocd-initial-admin-secret \
-  -o jsonpath='{.data.password}' | base64 -d; echo
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String((kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}')))
 ```
 
 ### 4. Deploy App of Apps
