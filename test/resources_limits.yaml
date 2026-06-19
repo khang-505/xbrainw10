@@ -1,17 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: test-fail-limits
+  name: test-violation-no-limits
+  namespace: demo
+  labels:
+    app: test-limit
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: fail-limits
-  template:
-    metadata:
-      labels:
-        app: fail-limits
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.21.6
+  containers:
+  - name: nginx-container
+    image: nginx:1.25-alpine
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"

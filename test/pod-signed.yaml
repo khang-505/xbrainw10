@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-signed
+spec:
+  containers:
+  - name: test-signed
+    image: ghcr.io/khang-505/w10-api:0.0.1
+    resources:
+      limits:
+        cpu: "200m"
+        memory: "256Mi"
+      requests:
+        cpu: "100m"
+        memory: "128Mi"

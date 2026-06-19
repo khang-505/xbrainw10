@@ -1,20 +1,17 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: test-fail-root
+  name: test-violation-root-user
+  namespace: demo
+  labels:
+    app: test-root
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: fail-root
-  template:
-    metadata:
-      labels:
-        app: fail-root
-    spec:
-      securityContext:
-        runAsUser: 0
-
-      containers:
-      - name: nginx
-        image: nginx:1.21.6
+  securityContext:
+    runAsNonRoot: false 
+  containers:
+  - name: ubuntu-container
+    image: ubuntu:22.04
+    command: ["sleep", "3600"]
+    securityContext:
+      runAsUser: 0
+      allowPrivilegeEscalation: true
