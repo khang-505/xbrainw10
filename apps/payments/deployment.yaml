@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-app
+  namespace: payments
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments
+  template:
+    metadata:
+      labels:
+        app: payments
+    spec:
+      containers:
+      - name: api
+        image: ghcr.io/khang-505/w10-api:0.0.1
+        ports:
+        - containerPort: 8080
